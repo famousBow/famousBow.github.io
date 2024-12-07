@@ -3,52 +3,194 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5x5 Bingo</title>
-    <meta property="og:url" content="https://famousbow.github.io/" />
-    <meta property="og:title" content="5x5 빙고" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="https://i.ytimg.com/vi/YS6rJaWziRE/maxresdefault.jpg"
-    />
-    <meta property="og:description" content="내 인생에 있어서 해야되는 것" />
-    <link rel="stylesheet" href="./reset.css" />
-    <link rel="stylesheet" href="./bingo.css" />
+    <title>코딩네컷 실전연습</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        background-image: url("./background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .container {
+        width: 390px;
+        background-color: #ff9d73;
+        height: 100%;
+      }
+
+      .photos {
+        margin-top: 30px;
+      }
+
+      .photo-frame {
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-color: #fff;
+        margin: 15px 20px;
+        height: 200px;
+        cursor: pointer;
+      }
+
+      #image1 {
+        background-image: url("./cat.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      #image2 {
+        background-image: url("./copybara.jpg");
+      }
+
+      #image3 {
+        background-image: url("./dog.jpg");
+      }
+
+      #image4 {
+        background-image: url("./duck.jpg");
+      }
+
+      .photo_description {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        background-color: black;
+        width: fit-content;
+        padding: 0 20px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        opacity: 0;
+      }
+
+      .video {
+        width: 100%;
+        height: 100%;
+      }
+
+      .showText {
+        opacity: 1;
+        transition: opacity 0.5s linear;
+      }
+
+      .hideText {
+        opacity: 0;
+        transition: opacity 0.5s linear;
+      }
+
+      .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .f-title {
+        color: white;
+        font-size: 25px;
+        font-weight: 900;
+      }
+
+      .f-date {
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+      }
+    </style>
+    <script>
+      // 텍스트가 보여지는 기능
+      // 1. 몇 번째 사진에 마우스가 올라갔는지 확인(if문)
+      // 2. 해당 사진을 찾아 hideText class를 지워주고, showText는 삽입해줌
+      function showText(number) {
+        if (number === 1) {
+          document.querySelector("#desc1").classList.remove("hideText");
+          document.querySelector("#desc1").classList.add("showText");
+        } else if (number === 2) {
+          document.querySelector("#desc2").classList.remove("hideText");
+          document.querySelector("#desc2").classList.add("showText");
+        } else {
+          document.querySelector("#desc3").classList.remove("hideText");
+          document.querySelector("#desc3").classList.add("showText");
+        }
+      }
+
+      // 텍스트가 감춰지는 기능
+      // 1. 몇 번째 사진에서 마우스가 벗어났는지 확인(if문)
+      // 2. 해당 사진을 찾아 shotText class를 지워주고, hideText는 삽입해줌
+      function hideText(number) {
+        if (number === 1) {
+          document.querySelector("#desc1").classList.remove("showText");
+          document.querySelector("#desc1").classList.add("hideText");
+        } else if (number === 2) {
+          document.querySelector("#desc2").classList.remove("showText");
+          document.querySelector("#desc2").classList.add("hideText");
+        } else {
+          document.querySelector("#desc3").classList.remove("showText");
+          document.querySelector("#desc3").classList.add("hideText");
+        }
+      }
+
+      // 클릭 기능
+      // 1. 선택된 사진의 숫자를 가진 텍스트를 alert 형태로 출력해줌
+      function alertText(number) {
+        alert(`${number}번째 추억이에요! 눌러주셔서 감사합니다 :)`);
+      }
+    </script>
   </head>
   <body>
-    <header>
-      <h1>
-        내 인생에 있어서 해야되는 것<br />
-        <strong>성공의 퍼즐조각을 완성시키는 거라 생각된다.</strong>
-      </h1>
-    </header>
-    <main>
-      <div class="num1">HTML,CSS,JS 공부<br />(주 3회이상)</div>
-      <div class="num2">???</div>
-      <div class="num3">???</div>
-      <div class="num4">???</div>
-      <div class="num5">???</div>
-      <div class="num6">???</div>
-      <div class="num7">달리기 기본 2KM<br />(주 5회이상)</div>
-      <div class="num8">???</div>
-      <div class="num9">???</div>
-      <div class="num10">???</div>
-      <div class="num11">???</div>
-      <div class="num12">???</div>
-      <div class="num13">식단하기<br />(주 3회이상)</div>
-      <div class="num14">???</div>
-      <div class="num15">???</div>
-      <div class="num16">???</div>
-      <div class="num17">???</div>
-      <div class="num18">???</div>
-      <div class="num19">요리 배우기<br />(한달 1회이상)</div>
-      <div class="num20">???</div>
-      <div class="num21">???</div>
-      <div class="num22">???</div>
-      <div class="num23">???</div>
-      <div class="num24">???</div>
-      <div class="num25">오래다닐수있는 회사찾기<br />(최소 6개월이상)</div>
-    </main>
-    <footer>5X5 빙고/copyright 박준후/2024.08.15</footer>
+    <div class="container">
+      <div class="photos">
+        <div
+          id="image1"
+          class="photo-frame"
+          onmouseover="showText(1)"
+          onmouseout="hideText(1)"
+          onclick="alertText(1)"
+        >
+          <span id="desc1" class="photo_description"
+            >먹이가 없어 빡친 고양이</span
+          >
+        </div>
+        <div
+          id="image2"
+          class="photo-frame"
+          onmouseover="showText(2)"
+          onmouseout="hideText(2)"
+          onclick="alertText(2)"
+        >
+          <span id="desc2" class="photo_description"
+            >여유로운 카피바라 가족들</span
+          >
+        </div>
+        <div
+          id="image3"
+          class="photo-frame"
+          onmouseover="showText(3)"
+          onmouseout="hideText(3)"
+          onclick="alertText(3)"
+        >
+          <span id="desc3" class="photo_description">산책에 신난 웰시코기</span>
+        </div>
+        <div class="photo-frame">
+          <iframe
+            src="https://www.youtube.com/embed/0dafj6B6wLE"
+            title="[초저가]5백원대 소고기라면에 소고기 왕창 넣고 7봉지로 영양 보충하고 밥말아묵자"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            class="video"
+          ></iframe>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="f-title">Happy Lunch Time</p>
+        <p class="f-date">2025.01.25</p>
+      </div>
+    </div>
   </body>
 </html>
